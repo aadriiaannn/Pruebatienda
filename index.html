@@ -61,10 +61,10 @@
         }
 
         .productos-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Flexibilidad de columnas */
             gap: 30px;
+            justify-content: center;
         }
 
         .producto {
@@ -72,7 +72,6 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
@@ -132,12 +131,7 @@
 
         @media (max-width: 768px) {
             .productos-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .producto {
-                width: 80%;
+                grid-template-columns: 1fr; /* Para pantallas pequeñas, se apilan en una columna */
             }
         }
     </style>
@@ -148,6 +142,7 @@
         <nav>
             <ul>
                 <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -176,49 +171,29 @@
                     <h3>Zapatos</h3>
                     <p>Precio: $50</p>
                 </div>
-            </div>
-            
-        
-                <!-- Tercer Producto -->
+
+                <!-- Agrega más productos aquí si es necesario -->
+            <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
+                    <img src="zapatos.jpg" alt="Zapatos">
+                    <h3>Zapatos</h3>
+                    <p>Precio: $50</p>
+                </div>
+
                 <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
                     <img src="zapatos.jpg" alt="Zapatos">
                     <h3>Zapatos</h3>
                     <p>Precio: $50</p>
                 </div>
-            </div>
-            
-                <!-- Tercer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
+
                 </div>
-            </div>
-            
-                <!-- Tercer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-            </div>
-            
-                <!-- Tercer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-            </div>
-            
-                <!-- Tercer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-            </div>
-    
+        </section>
+
+        <section id="contacto">
+            <h2>Realiza tu Pedido</h2>
+            <!-- Incrustar el formulario de Google aquí -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2025 CanariShop. Todos los derechos reservados.</p>
