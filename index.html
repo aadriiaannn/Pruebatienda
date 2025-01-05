@@ -4,8 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CanariShop - Tienda de Ropa</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        #productos {
+            text-align: center;
+        }
+
+        #productos h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .productos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .producto {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .producto img {
+            width: 100%;
+            border-radius: 8px;
+            max-height: 250px;
+            object-fit: cover;
+        }
+
+        .producto h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .producto p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        #contacto {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        #contacto h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            max-width: 640px;
+            height: 800px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .productos-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .producto {
+                width: 80%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,26 +158,25 @@
             <h2>Productos</h2>
             <div class="productos-container">
                 <!-- Primer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';" style="cursor: pointer;">
+                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
                     <img src="descarga.jpg" alt="Camisa">
                     <h3>Camisa</h3>
                     <p>Precio: $20</p>
                 </div>
 
                 <!-- Segundo Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';" style="cursor: pointer;">
+                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
                     <img src="pantalon.jpg" alt="Pantalón">
                     <h3>Pantalón</h3>
                     <p>Precio: $30</p>
                 </div>
 
                 <!-- Tercer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';" style="cursor: pointer;">
+                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
                     <img src="zapatos.jpg" alt="Zapatos">
                     <h3>Zapatos</h3>
                     <p>Precio: $50</p>
                 </div>
-                <!-- Agrega más productos aquí si es necesario -->
             </div>
         </section>
 
