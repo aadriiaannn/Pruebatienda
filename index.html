@@ -85,16 +85,19 @@
         .slider {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 200px; /* Ajusta la altura según tus necesidades */
             overflow: hidden;
             border-radius: 8px;
+            display: flex; /* Usar flexbox para centrar las imágenes */
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
         }
 
         .slider img {
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ajuste de imagen para que no se recorte y se vea completa */
+            object-fit: cover; /* Cambia a 'cover' o 'contain' según lo que prefieras */
             object-position: center; /* Centra la imagen dentro del contenedor */
             transition: opacity 1s ease-in-out;
             opacity: 0;
@@ -136,7 +139,7 @@
                 <div class="producto" onclick="window.location.href='https://example.com';">
                     <img src="syna.jpg" alt="Conjunto Syna">
                     <h3>Conjuntos Syna</h3>
-                    <p>Precio: 75€</p>
+                    <p >Precio: 75€</p>
                 </div>
 
                 <div class="producto" onclick="window.location.href='https://example.com';">
