@@ -85,17 +85,17 @@
         .slider {
             position: relative;
             width: 100%;
+            height: 200px;
             overflow: hidden;
             border-radius: 8px;
-            height: 200px;
         }
 
         .slider img {
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta la imagen al cuadro */
-            object-position: center; /* Centra la imagen */
+            object-fit: contain; /* Ajuste de imagen para que no se recorte y se vea completa */
+            object-position: center; /* Centra la imagen dentro del contenedor */
             transition: opacity 1s ease-in-out;
             opacity: 0;
         }
@@ -103,7 +103,7 @@
         .slider img.active {
             opacity: 1;
         }
-        
+
         @media (max-width: 768px) {
             .productos-container {
                 grid-template-columns: 1fr;
