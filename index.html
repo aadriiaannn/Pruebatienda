@@ -73,6 +73,7 @@
             height: auto;
             border-radius: 8px;
             margin-bottom: 10px;
+            object-fit: cover;
         }
 
         .producto:hover {
@@ -93,7 +94,8 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Ajusta la imagen al cuadro */
+            object-position: center; /* Centra la imagen */
             transition: opacity 1s ease-in-out;
             opacity: 0;
         }
@@ -156,10 +158,10 @@
                 <!-- Nuevo producto con slider -->
                 <div class="producto">
                     <div class="slider">
-                        <img src="burberry back.jpg" alt="Bape - Imagen 1" class="active">
-                        <img src="burberry back.jpg" alt="Bape - Imagen 2">
+                        <img src="bape.jpg" alt="Bape - Imagen 1" class="active">
+                        <img src="bape-back.jpg" alt="Bape - Imagen 2">
                     </div>
-                    <h3>Burberry</h3>
+                    <h3>Bape</h3>
                     <p>Precio: 90€</p>
                 </div>
             </div>
