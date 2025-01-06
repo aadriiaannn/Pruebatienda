@@ -62,7 +62,7 @@
 
         .productos-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Flexibilidad de columnas */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             justify-content: center;
         }
@@ -97,31 +97,27 @@
         .slider {
             position: relative;
             width: 100%;
+            height: 250px;
             overflow: hidden;
             border-radius: 8px;
         }
 
         .slider img {
-            width: 100%;
-            height: auto;
-            display: block;
             position: absolute;
-            top: 0;
-            left: 100%; /* Oculta las imágenes por defecto */
-            transition: transform 0.5s ease, left 0.5s ease;
-        }
-
-        .slider img:first-child {
-            left: 0; /* Muestra la primera imagen por defecto */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
         }
 
         .slider img.active {
-            left: 0;
+            opacity: 1;
         }
         
         @media (max-width: 768px) {
             .productos-container {
-                grid-template-columns: 1fr; /* Para pantallas pequeñas, se apilan en una columna */
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -134,43 +130,50 @@
     <main>
         <section id="productos">
             <h2>Productos</h2>
-            <!-- Producto sin slider (una imagen) -->
-            <div class="producto" onclick="window.location.href='https://example.com';">
-                <img src="Denim tears.jpg" alt="Conjunto">
-                <h3>Conjunto Denim Tears</h3>
-                <p>Precio: 75€</p>
-            </div>
-
-            <!-- Producto sin slider (una imagen) -->
-            <div class="producto" onclick="window.location.href='https://example.com';">
-                <img src="bape.jpg" alt="Zapatos">
-                <h3>Conjunto Denim Tears</h3>
-                <p>Precio: 80€</p>
-            </div>
-
-            <!-- Producto sin slider (una imagen) -->
-            <div class="producto" onclick="window.location.href='https://example.com';">
-                <img src="syna.jpg" alt="Conjunto">
-                <h3>Conjuntos Syna</h3>
-                <p>Precio: 75€</p>
-            </div>
-
-            <!-- Producto sin slider (una imagen) -->
-            <div class="producto" onclick="window.location.href='https://example.com';">
-                <img src="Conjunto syna.jpg" alt="Conjunto">
-                <h3>Conjuntos Syna</h3>
-                <p>Precio: 75€</p>
-            </div>
-            
+            <!-- Productos existentes -->
             <div class="productos-container">
-                <!-- Producto con slider (dos imágenes) -->
+                <div class="producto" onclick="window.location.href='https://example.com';">
+                    <img src="Denim tears.jpg" alt="Conjunto">
+                    <h3>Conjunto Denim Tears</h3>
+                    <p>Precio: 75€</p>
+                </div>
+
+                <div class="producto" onclick="window.location.href='https://example.com';">
+                    <img src="bape.jpg" alt="Zapatos">
+                    <h3>Conjunto Denim Tears</h3>
+                    <p>Precio: 80€</p>
+                </div>
+
+                <div class="producto" onclick="window.location.href='https://example.com';">
+                    <img src="syna.jpg" alt="Conjunto">
+                    <h3>Conjuntos Syna</h3>
+                    <p>Precio: 75€</p>
+                </div>
+
+                <div class="producto" onclick="window.location.href='https://example.com';">
+                    <img src="Conjunto syna.jpg" alt="Conjunto">
+                    <h3>Conjuntos Syna</h3>
+                    <p>Precio: 75€</p>
+                </div>
+
+                <!-- Producto con slider (existente) -->
                 <div class="producto">
                     <div class="slider">
-                        <img src="burberry front.jpg" alt="burberry - 1">
+                        <img src="burberry front.jpg" alt="burberry - 1" class="active">
                         <img src="burberry back.jpg" alt="burberry - 2">
                     </div>
                     <h3>Bolso Burberry</h3>
                     <p>Precio: 75€</p>
+                </div>
+
+                <!-- Producto con slider (nuevo) -->
+                <div class="producto">
+                    <div class="slider">
+                        <img src="burberry front.jpg" alt="Bape - Imagen 1" class="active">
+                        <img src="burberry back.jpg" alt="Bape - Imagen 2">
+                    </div>
+                    <h3>Burberry TEST</h3>
+                    <p>Precio: 90€</p>
                 </div>
             </div>
         </section>
