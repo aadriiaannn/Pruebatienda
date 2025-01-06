@@ -77,13 +77,6 @@
             cursor: pointer;
         }
 
-        .producto img {
-            width: 100%;
-            border-radius: 8px;
-            max-height: 250px;
-            object-fit: cover;
-        }
-
         .producto h3 {
             font-size: 1.5em;
             color: #333;
@@ -100,35 +93,32 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        #contacto {
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        #contacto h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            border: none;
+        /* Slider */
+        .slider {
+            position: relative;
             width: 100%;
-            max-width: 640px;
-            height: 800px;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            margin-top: 40px;
+        .slider img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 100%; /* Oculta las imágenes por defecto */
+            transition: transform 0.5s ease, left 0.5s ease;
         }
 
-        footer p {
-            margin: 0;
+        .slider img:first-child {
+            left: 0; /* Muestra la primera imagen por defecto */
         }
 
+        .slider img.active {
+            left: 0;
+        }
+        
         @media (max-width: 768px) {
             .productos-container {
                 grid-template-columns: 1fr; /* Para pantallas pequeñas, se apilan en una columna */
@@ -139,154 +129,71 @@
 <body>
     <header>
         <h1>CanaryShop</h1>
-        <nav>
-            <ul>
-                
-            </ul>
-        </nav>
     </header>
 
     <main>
         <section id="productos">
             <h2>Productos</h2>
+            <!-- Producto sin slider (una imagen) -->
+            <div class="producto" onclick="window.location.href='https://example.com';">
+                <img src="Denim tears.jpg" alt="Conjunto">
+                <h3>Conjunto Denim Tears</h3>
+                <p>Precio: 75€</p>
+            </div>
+
+            <!-- Producto sin slider (una imagen) -->
+            <div class="producto" onclick="window.location.href='https://example.com';">
+                <img src="bape.jpg" alt="Zapatos">
+                <h3>Conjunto Denim Tears</h3>
+                <p>Precio: 80€</p>
+            </div>
+
+            <!-- Producto sin slider (una imagen) -->
+            <div class="producto" onclick="window.location.href='https://example.com';">
+                <img src="syna.jpg" alt="Conjunto">
+                <h3>Conjuntos Syna</h3>
+                <p>Precio: 75€</p>
+            </div>
+
+            <!-- Producto sin slider (una imagen) -->
+            <div class="producto" onclick="window.location.href='https://example.com';">
+                <img src="Conjunto syna.jpg" alt="Conjunto">
+                <h3>Conjuntos Syna</h3>
+                <p>Precio: 75€</p>
+            </div>
+            
             <div class="productos-container">
-                <!-- Primer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="descarga.jpg" alt="Camisa">
-                    <h3>Camisa</h3>
-                    <p>Precio: $20</p>
+                <!-- Producto con slider (dos imágenes) -->
+                <div class="producto">
+                    <div class="slider">
+                        <img src="burberry front.jpg" alt="burberry - 1">
+                        <img src="burberry back.jpg" alt="burberry - 2">
+                    </div>
+                    <h3>Bolso Burberry</h3>
+                    <p>Precio: 75€</p>
                 </div>
-
-                <!-- Segundo Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="pantalon.jpg" alt="Pantalón">
-                    <h3>Pantalón</h3>
-                    <p>Precio: $30</p>
-                </div>
-
-                <!-- Tercer Producto -->
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <!-- Agrega más productos aquí si es necesario -->
-            <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScoRST1FBvisG09NaubOF6xrzCGzMstvExVhtI127RPXqBLaA/viewform?usp=header';">
-                    <img src="zapatos.jpg" alt="Zapatos">
-                    <h3>Zapatos</h3>
-                    <p>Precio: $50</p>
-                </div>
-
-                </div>
-
-        
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 CanaryShop. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('.slider').forEach(slider => {
+            const images = slider.querySelectorAll('img');
+            let current = 0;
+
+            const changeImage = () => {
+                images[current].classList.remove('active');
+                current = (current + 1) % images.length;
+                images[current].classList.add('active');
+            };
+
+            // Cambiar imagen cada 3 segundos
+            setInterval(changeImage, 3000);
+        });
+    </script>
 </body>
 </html>
