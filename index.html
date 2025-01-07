@@ -54,7 +54,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
         }
 
         .producto h3 {
@@ -74,7 +73,6 @@
             border-radius: 8px;
             margin-bottom: 10px;
             object-fit: cover;
-            cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic */
         }
 
         .producto:hover {
@@ -82,68 +80,133 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        /* Modal */
-        .modal {
-            display: none; /* Oculto por defecto */
+        #carrito {
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
-            width: 100%;
+            right: 0;
+            width: 400px;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
+            background-color: #fff;
+            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            overflow-y: auto;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            display: none;
+        }
+
+        #carrito h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #carrito ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #carrito ul li {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-            margin: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
+        #carrito .btn-cerrar {
+            background-color: #FF4C4C;
             color: white;
-            font-size: 40px;
-            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
             cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
         }
 
-        /* Slider */
-        .slider {
-            position: relative;
+        #carrito .btn-cerrar:hover {
+            background-color: #FF1A1A;
+        }
+
+        #carrito .btn-vaciar {
+            background-color: #FFCC00;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        #carrito .btn-vaciar:hover {
+            background-color: #FFC300;
+        }
+
+        #carrito .btn-finalizar {
+            background-color: #33CCFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
             width: 100%;
-            height: 200px; /* Ajusta la altura según tus necesidades */
-            overflow: hidden;
-            border-radius: 8px;
-            display: flex; /* Usar flexbox para centrar las imágenes */
-            justify-content: center; /* Centra horizontalmente */
-            align-items: center; /* Centra verticalmente */
+            margin-top: 20px;
         }
 
-        .slider img {
-            position: absolute;
+        #carrito .btn-finalizar:hover {
+            background-color: #1f99cc;
+        }
+
+        #formulario-pedido {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #formulario-pedido input {
+            padding: 10px;
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cambia a 'cover' o 'contain' según lo que prefieras */
-            object-position: center; /* Centra la imagen dentro del contenedor */
-            transition: opacity 1s ease-in-out;
-            opacity: 0;
+            margin: 10px 0;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
-        .slider img.active {
-            opacity: 1;
+        #formulario-pedido button {
+            background-color: #33CCFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
         }
 
-        @media (max-width: 768px) {
-            .productos-container {
-                grid-template-columns: 1fr;
-            }
+        #formulario-pedido button:hover {
+            background-color: #1f99cc;
+        }
+
+        #carrito-boton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            color: #33CCFF;
+            border: 2px solid #33CCFF;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
         }
     </style>
 </head>
@@ -153,99 +216,197 @@
     </header>
 
     <main>
-        <section id="productos">
+        <div id="productos">
             <h2>Productos</h2>
             <div class="productos-container">
                 <!-- Productos individuales -->
-                <div class="producto" onclick="window.location.href='https://example.com';">
-                    <img src="Denim tears.jpg" alt="Conjunto Denim Tears" onclick="openModal(this.src)">
+                <div class="producto">
+                    <img src="Denim tears.jpg" alt="Conjunto Denim Tears">
                     <h3>Conjunto Denim Tears</h3>
                     <p>Precio: 75€</p>
+                    <select id="talla-denim">
+                        <option value="">Seleccionar talla</option>
+                        <option value="S">Talla S</option>
+                        <option value="M">Talla M</option>
+                        <option value="L">Talla L</option>
+                    </select>
+                    <select id="color-denim">
+                        <option value="">Seleccionar color</option>
+                        <option value="Rojo">Rojo</option>
+                        <option value="Azul">Azul</option>
+                        <option value="Verde">Verde</option>
+                    </select>
+                    <button onclick="agregarAlCarrito('Conjunto Denim Tears', 75, 'talla-denim', 'color-denim')">Añadir al Carrito</button>
                 </div>
 
-                <div class="producto" onclick="window.location.href='https://example.com';">
-                    <img src="bape.jpg" alt="Zapatos Bape" onclick="openModal(this.src)">
+                <div class="producto">
+                    <img src="bape.jpg" alt="Zapatos Bape">
                     <h3>Zapatos Bape</h3>
                     <p>Precio: 80€</p>
+                    <select id="talla-bape">
+                        <option value="">Seleccionar talla</option>
+                        <option value="38">Talla 38</option>
+                        <option value="39">Talla 39</option>
+                        <option value="40">Talla 40</option>
+                    </select>
+                    <select id="color-bape">
+                        <option value="">Seleccionar color</option>
+                        <option value="Negro">Negro</option>
+                        <option value="Blanco">Blanco</option>
+                    </select>
+                    <button onclick="agregarAlCarrito('Zapatos Bape', 80, 'talla-bape', 'color-bape')">Añadir al Carrito</button>
                 </div>
 
-                <div class="producto" onclick="window.location.href='https://example.com';">
-                    <img src="syna.jpg" alt="Conjunto Syna" onclick="openModal(this.src)">
-                    <h3>Conjuntos Syna</h3>
+                <div class="producto">
+                    <img src="syna.jpg" alt="Conjunto Syna">
+                    <h3>Conjunto Syna</h3>
                     <p>Precio: 75€</p>
-                </div>
-
-                <div class="producto" onclick="window.location.href='https://example.com';">
-                    <img src="Conjunto syna.jpg" alt="Conjunto Syna" onclick="openModal(this.src)">
-                    <h3>Conjuntos Syna</h3>
-                    <p>Precio: 75€</p>
-                </div>
-
-                <!-- Producto con slider -->
-                <div class="producto" onclick="window.location.href='https://example.com';">
-                    <div class="slider">
-                        <img src="burberry front.jpg" alt="Bolso Burberry - Vista Frontal" class="active" onclick="openModal(this.src)">
-                        <img src="burberry back.jpg" alt="Bolso Burberry - Vista Trasera" onclick="openModal(this.src)">
-                    </div>
-                    <h3>Bolso Burberry</h3>
-                    <p>Precio: 75€</p>
-                </div>
-
-                <!-- Nuevo producto con slider -->
-                <div class="producto" onclick="window.location.href='https://example.com';">
-                    <div class="slider">
-                        <img src="louisvi front.jpg" alt="Louis - Imagen 1" class="active" onclick="openModal(this.src)">
-                        <img src="louisvi back.jpg" alt="Louis - Imagen 2" onclick="openModal(this.src)">
-                    </div>
-                    <h3>Bolso Louis Vuitton</h3>
-                    <p>Precio: 75€</p>
+                    <select id="talla-syna">
+                        <option value="">Seleccionar talla</option>
+                        <option value="S">Talla S</option>
+                        <option value="M">Talla M</option>
+                        <option value="L">Talla L</option>
+                    </select>
+                    <select id="color-syna">
+                        <option value="">Seleccionar color</option>
+                        <option value="Rojo">Rojo</option>
+                        <option value="Azul">Azul</option>
+                    </select>
+                    <button onclick="agregarAlCarrito('Conjunto Syna', 75, 'talla-syna', 'color-syna')">Añadir al Carrito</button>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <div class="modal" id="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImage" src="" alt="Imagen ampliada">
+    <div id="carrito">
+        <h2>Tu Carrito</h2>
+        <ul id="carrito-lista">
+            <!-- Aquí se añaden los productos al carrito -->
+        </ul>
+        <button class="btn-cerrar" onclick="cerrarCarrito()">Cerrar</button>
+        <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+
+        <div id="formulario-pedido">
+            <h3>Datos de Envío</h3>
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="apellidos" placeholder="Apellidos" required>
+            <input type="text" id="direccion" placeholder="Dirección" required>
+            <input type="tel" id="telefono" placeholder="Teléfono" required oninput="validarTelefono()">
+            <button onclick="enviarPedido()">Enviar Pedido</button>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 CanaryShop. Todos los derechos reservados.</p>
-    </footer>
+    <button id="carrito-boton" onclick="abrirCarrito()">🛒</button>
 
     <script>
-        document.querySelectorAll('.slider').forEach(slider => {
-            const images = slider.querySelectorAll('img');
-            let current = 0;
+        let carrito = [];
 
-            const changeImage = () => {
-                images[current].classList.remove('active');
-                current = (current + 1) % images.length;
-                images[current].classList.add('active');
+        function abrirCarrito() {
+            document.getElementById("carrito").style.display = "block";
+            mostrarCarrito();
+        }
+
+        function cerrarCarrito() {
+            document.getElementById("carrito").style.display = "none";
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            mostrarCarrito();
+        }
+
+        function mostrarCarrito() {
+            const listaCarrito = document.getElementById("carrito-lista");
+            listaCarrito.innerHTML = "";
+            if (carrito.length === 0) {
+                listaCarrito.innerHTML = "<li>El carrito está vacío.</li>";
+                return;
+            }
+
+            carrito.forEach(item => {
+                const li = document.createElement("li");
+                li.innerHTML = `${item.nombre} - ${item.precio}€ (Talla: ${item.talla}, Color: ${item.color})`;
+                listaCarrito.appendChild(li);
+            });
+        }
+
+        function agregarAlCarrito(nombre, precio, tallaId, colorId) {
+            const talla = document.getElementById(tallaId).value;
+            const color = document.getElementById(colorId).value;
+
+            if (!talla || !color) {
+                alert("Por favor, selecciona una talla y un color.");
+                return;
+            }
+
+            carrito.push({
+                nombre: nombre,
+                precio: precio,
+                talla: talla,
+                color: color
+            });
+            mostrarCarrito();
+        }
+
+        function finalizarPedido() {
+            if (carrito.length === 0) {
+                alert("El carrito está vacío. Agrega productos antes de finalizar el pedido.");
+                return;
+            }
+
+            document.getElementById("formulario-pedido").style.display = "block";
+        }
+
+        function enviarPedido() {
+            const nombre = document.getElementById("nombre").value;
+            const apellidos = document.getElementById("apellidos").value;
+            const direccion = document.getElementById("direccion").value;
+            const telefono = document.getElementById("telefono").value;
+
+            if (!nombre || !apellidos || !direccion || !telefono) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            const webhookUrl = 'https://discord.com/api/webhooks/1326148664321900554/TMRSiGwnJsCUI-7oik2Vo6F4F_t2DqdqWf2dGYVp61X_6_7SfFDQmFpAnAvJ8NSH7GZT'; // Reemplaza con tu URL de webhook
+            const message = {
+                content: `@everyone Nuevo pedido:\nNombre: ${nombre} ${apellidos}\nDirección: ${direccion}\nTeléfono: ${telefono}\nCarrito: ${carrito.map(item => `${item.nombre} - ${item.talla} - ${item.color}`).join("\n")}`,
             };
 
-            // Cambiar imagen cada 3 segundos
-            setInterval(changeImage, 3000);
-        });
-
-        function openModal(src) {
-            const modal = document.getElementById('modal');
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = src;
-            modal.style.display = 'flex'; // Muestra el modal
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Pedido enviado exitosamente.");
+                    vaciarCarrito();
+                    cerrarCarrito();
+                    document.getElementById("formulario-pedido").style.display = "none";  // Ocultar formulario después de enviar
+                    limpiarFormulario();  // Limpiar los campos
+                } else {
+                    alert("Hubo un error al enviar el pedido.");
+                }
+            })
+            .catch(error => {
+                alert("Error de conexión al enviar el pedido.");
+            });
         }
 
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = 'none'; // Oculta el modal
+        function limpiarFormulario() {
+            document.getElementById("nombre").value = '';
+            document.getElementById("apellidos").value = '';
+            document.getElementById("direccion").value = '';
+            document.getElementById("telefono").value = '';
         }
 
-        // Cierra el modal si se hace clic fuera de la imagen
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                closeModal();
-            }
+        function validarTelefono() {
+            const telefono = document.getElementById("telefono");
+            telefono.value = telefono.value.replace(/\D/g, ''); // Elimina cualquier carácter que no sea número
         }
     </script>
 </body>
