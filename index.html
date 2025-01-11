@@ -10,21 +10,21 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: #f7f7f7;
+            color: #333;
         }
 
         header {
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            background-color: #33CCFF;
             color: #fff;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: 2.5em;
         }
 
         main {
@@ -36,69 +36,49 @@
         }
 
         #productos h2 {
-            font-size: 2.5em;
-            color: #343a40;
-            margin-bottom: 40px;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         .productos-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
         }
 
         .producto {
             background-color: #fff;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .producto h3 {
-            font-size: 1.8em;
-            color: #495057;
+            font-size: 1.6em;
+            color: #333;
             margin: 10px 0;
         }
 
         .producto p {
             font-size: 1.2em;
-            color: #6c757d;
+            color: #555;
         }
 
         .producto img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
             object-fit: cover;
         }
 
         .producto:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .producto select, .producto button {
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 1em;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            width: 100%;
-        }
-
-        .producto button {
-            background-color: #ff7e5f;
-            color: white;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .producto button:hover {
-            background-color: #e76a4b;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         #carrito {
@@ -108,21 +88,17 @@
             width: 400px;
             height: 100%;
             background-color: #fff;
-            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
             overflow-y: auto;
+            transition: right 0.3s ease-in-out;
             z-index: 1000;
-            transform: translateX(100%);
-            transition: transform 0.4s ease-in-out;
-        }
-
-        #carrito.abierto {
-            transform: translateX(0);
+            display: none;
         }
 
         #carrito h2 {
-            font-size: 2em;
-            color: #495057;
+            font-size: 1.8em;
+            color: #333;
             margin-bottom: 20px;
         }
 
@@ -134,80 +110,73 @@
         #carrito ul li {
             margin-bottom: 10px;
             font-size: 1.2em;
-            color: #6c757d;
+            color: #555;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        #carrito button {
-            padding: 10px 20px;
+        #carrito .btn-cerrar, #carrito .btn-vaciar, #carrito .btn-finalizar {
+            background-color: #33CCFF;
+            color: white;
             border: none;
-            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 1.1em;
             cursor: pointer;
-            font-size: 1em;
+            border-radius: 8px;
             margin-top: 10px;
+            width: 100%;
         }
 
-        #carrito .btn-cerrar {
-            background-color: #e76a4b;
-            color: white;
-        }
-
-        #carrito .btn-vaciar {
-            background-color: #ffc107;
-            color: black;
-        }
-
-        #carrito .btn-finalizar {
-            background-color: #ff7e5f;
-            color: white;
+        #carrito .btn-cerrar:hover, #carrito .btn-vaciar:hover, #carrito .btn-finalizar:hover {
+            background-color: #1f99cc;
         }
 
         #formulario-pedido {
+            display: none;
             margin-top: 20px;
         }
 
         #formulario-pedido input {
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             margin: 10px 0;
-            font-size: 1em;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
+            font-size: 1.1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
         #formulario-pedido button {
-            background-color: #ff7e5f;
+            background-color: #33CCFF;
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 1.1em;
+            padding: 12px 25px;
+            font-size: 1.2em;
             cursor: pointer;
             border-radius: 8px;
             width: 100%;
         }
 
         #formulario-pedido button:hover {
-            background-color: #e76a4b;
+            background-color: #1f99cc;
         }
 
         #carrito-boton {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
-            color: white;
-            border: none;
+            background-color: #fff;
+            color: #33CCFF;
+            border: 2px solid #33CCFF;
             border-radius: 50%;
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
+            font-size: 1.8em;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 2000;
         }
     </style>
@@ -221,6 +190,7 @@
         <div id="productos">
             <h2>Productos</h2>
             <div class="productos-container">
+                <!-- Productos individuales -->
                 <div class="producto">
                     <img src="Denim tears.jpg" alt="Conjunto Denim Tears">
                     <h3>Conjunto Denim Tears</h3>
