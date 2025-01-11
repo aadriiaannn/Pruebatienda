@@ -10,21 +10,21 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #f8f9fa;
+            color: #343a40;
         }
 
         header {
-            background-color: #33CCFF;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
             color: #fff;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3em;
         }
 
         main {
@@ -36,86 +36,93 @@
         }
 
         #productos h2 {
-            font-size: 2.2em;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-size: 2.5em;
+            color: #343a40;
+            margin-bottom: 40px;
         }
 
         .productos-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
         }
 
         .producto {
             background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e6e6e6;
         }
 
         .producto h3 {
-            font-size: 1.6em;
-            color: #333;
+            font-size: 1.8em;
+            color: #495057;
             margin: 10px 0;
-            font-weight: 600;
         }
 
         .producto p {
-            font-size: 1.1em;
-            color: #666;
+            font-size: 1.2em;
+            color: #6c757d;
         }
 
         .producto img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 15px;
             object-fit: cover;
         }
 
         .producto:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
 
-        button {
-            background-color: #33CCFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
+        .producto select, .producto button {
+            margin-top: 10px;
+            padding: 10px;
             font-size: 1em;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .producto button {
+            background-color: #ff7e5f;
+            color: white;
             cursor: pointer;
+            border: none;
             transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            background-color: #1f99cc;
+        .producto button:hover {
+            background-color: #e76a4b;
         }
 
         #carrito {
             position: fixed;
             top: 0;
-            right: -400px;
+            right: 0;
             width: 400px;
             height: 100%;
             background-color: #fff;
-            box-shadow: -2px 0 12px rgba(0, 0, 0, 0.2);
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
             padding: 20px;
             overflow-y: auto;
-            transition: right 0.3s ease-in-out;
             z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.4s ease-in-out;
+        }
+
+        #carrito.abierto {
+            transform: translateX(0);
         }
 
         #carrito h2 {
             font-size: 2em;
-            color: #333;
+            color: #495057;
             margin-bottom: 20px;
         }
 
@@ -126,63 +133,38 @@
 
         #carrito ul li {
             margin-bottom: 10px;
-            font-size: 1.1em;
-            color: #555;
+            font-size: 1.2em;
+            color: #6c757d;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        #carrito .btn-cerrar {
-            background-color: #FF4C4C;
-            color: white;
-            border: none;
-            border-radius: 5px;
+        #carrito button {
             padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1em;
-            margin-top: 20px;
-            width: 100%;
+            font-size: 1em;
+            margin-top: 10px;
         }
 
-        #carrito .btn-cerrar:hover {
-            background-color: #FF1A1A;
+        #carrito .btn-cerrar {
+            background-color: #e76a4b;
+            color: white;
         }
 
         #carrito .btn-vaciar {
-            background-color: #FFCC00;
+            background-color: #ffc107;
             color: black;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1.1em;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        #carrito .btn-vaciar:hover {
-            background-color: #FFC300;
         }
 
         #carrito .btn-finalizar {
-            background-color: #33CCFF;
+            background-color: #ff7e5f;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        #carrito .btn-finalizar:hover {
-            background-color: #1f99cc;
         }
 
         #formulario-pedido {
-            display: none;
             margin-top: 20px;
         }
 
@@ -190,42 +172,42 @@
             padding: 10px;
             width: 100%;
             margin: 10px 0;
-            font-size: 1.1em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            font-size: 1em;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
         }
 
         #formulario-pedido button {
-            background-color: #33CCFF;
+            background-color: #ff7e5f;
             color: white;
             border: none;
             padding: 10px 20px;
             font-size: 1.1em;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
             width: 100%;
         }
 
         #formulario-pedido button:hover {
-            background-color: #1f99cc;
+            background-color: #e76a4b;
         }
 
         #carrito-boton {
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: #fff;
-            color: #33CCFF;
-            border: 2px solid #33CCFF;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
             border-radius: 50%;
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8em;
+            font-size: 1.5em;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 2000;
         }
     </style>
@@ -323,13 +305,14 @@
         let carrito = [];
 
         function abrirCarrito() {
-            document.getElementById("carrito").style.right = "0";
-            mostrarCarrito();
-        }
+    document.getElementById("carrito").classList.add("abierto");  // Agregar la clase 'abierto'
+    mostrarCarrito();
+}
 
-        function cerrarCarrito() {
-            document.getElementById("carrito").style.right = "-400px";
-        }
+function cerrarCarrito() {
+    document.getElementById("carrito").classList.remove("abierto");  // Eliminar la clase 'abierto'
+}
+
 
         function vaciarCarrito() {
             carrito = [];
